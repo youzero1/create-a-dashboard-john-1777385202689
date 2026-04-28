@@ -87,6 +87,17 @@
   justify-content: center;
 }
 
+/* Avatar button */
+.avatarBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .avatar {
   width: 36px;
   height: 36px;
@@ -98,5 +109,215 @@
   justify-content: center;
   font-size: 0.75rem;
   font-weight: 700;
+}
+
+.chevron {
+  color: var(--color-text-muted);
+  transition: transform 0.2s;
+}
+
+.chevronUp {
+  transform: rotate(180deg);
+}
+
+/* Shared popover wrapper */
+.popoverWrap {
+  position: relative;
+}
+
+/* Shared dropdown panel */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.625rem);
+  right: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+  min-width: 260px;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Notification dropdown */
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dropdownTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.markReadBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  background: none;
+  border: none;
   cursor: pointer;
+  padding: 0;
+}
+
+.markReadBtn:hover {
+  text-decoration: underline;
+}
+
+.notifList {
+  list-style: none;
+  margin: 0;
+  padding: 0.375rem 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.notifEmpty {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.notifItem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  transition: background-color 0.12s;
+}
+
+.notifItem:hover {
+  background-color: var(--color-background);
+}
+
+.unread {
+  background-color: color-mix(in srgb, var(--color-primary) 6%, transparent);
+}
+
+.notifContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  margin-top: 0.35rem;
+  flex-shrink: 0;
+}
+
+.notifText {
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  margin: 0 0 0.125rem;
+  line-height: 1.4;
+}
+
+.notifTime {
+  font-size: 0.71875rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.dismissBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0.125rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dismissBtn:hover {
+  color: var(--color-error);
+  background-color: var(--color-border);
+}
+
+/* Profile dropdown */
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+}
+
+.avatarLg {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.profileName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 0.125rem;
+}
+
+.profileEmail {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.profileMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0.375rem 0;
+}
+
+.profileMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+
+.profileMenuItem:hover {
+  background-color: var(--color-background);
+}
+
+.logout {
+  color: var(--color-error);
+}
+
+.logout:hover {
+  background-color: color-mix(in srgb, var(--color-error) 8%, transparent);
 }
