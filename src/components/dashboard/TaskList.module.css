@@ -64,15 +64,15 @@
 
 .high {
   background-color: #fee2e2;
-  color: var(--color-error);
+  color: #dc2626;
 }
 
 .medium {
   background-color: #fef3c7;
-  color: var(--color-warning);
+  color: #d97706;
 }
 
 .low {
   background-color: #d1fae5;
-  color: var(--color-success);
+  color: #16a34a;
 }

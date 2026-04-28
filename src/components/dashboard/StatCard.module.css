@@ -8,11 +8,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  transition: box-shadow 0.15s;
+  transition: box-shadow 0.15s, transform 0.15s;
 }
 
 .card:hover {
   box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .header {
@@ -33,7 +34,7 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  background-color: var(--color-background);
+  background-color: var(--color-primary-light);
   display: flex;
   align-items: center;
   justify-content: center;

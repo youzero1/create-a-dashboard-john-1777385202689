@@ -15,7 +15,7 @@
   align-items: center;
   gap: 0.625rem;
   padding: 1.5rem 1.25rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
 .logoIcon {
@@ -25,14 +25,15 @@
   width: 34px;
   height: 34px;
   border-radius: var(--radius-md);
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   color: #fff;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.4);
 }
 
 .logoText {
   font-size: 1.125rem;
   font-weight: 700;
-  color: #fff;
+  color: #fafafa;
   letter-spacing: 0.5px;
 }
 
@@ -55,7 +56,7 @@
   gap: 0.75rem;
   padding: 0.65rem 0.875rem;
   border-radius: var(--radius-md);
-  color: #94a3b8;
+  color: #a1a1aa;
   font-size: 0.875rem;
   font-weight: 500;
   transition: background-color 0.15s, color 0.15s;
@@ -64,16 +65,19 @@
 
 .navLink:hover {
   background-color: var(--color-sidebar-hover);
-  color: #fff;
+  color: #fafafa;
 }
 
 .navLinkActive {
-  background-color: var(--color-primary);
-  color: #fff;
+  background: linear-gradient(90deg, rgba(124,58,237,0.25) 0%, rgba(124,58,237,0.1) 100%);
+  color: #a78bfa;
+  border-left: 2px solid #7c3aed;
+  padding-left: calc(0.875rem - 2px);
 }
 
 .navLinkActive:hover {
-  background-color: var(--color-primary-hover);
+  background: linear-gradient(90deg, rgba(124,58,237,0.3) 0%, rgba(124,58,237,0.15) 100%);
+  color: #c4b5fd;
 }
 
 .navIcon {
@@ -85,14 +89,14 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1.25rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,0.07);
 }
 
 .userAvatar {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   color: #fff;
   display: flex;
   align-items: center;
@@ -100,6 +104,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(124,58,237,0.35);
 }
 
 .userInfo {
@@ -109,7 +114,7 @@
 .userName {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: #fff;
+  color: #fafafa;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -117,5 +122,5 @@
 
 .userRole {
   font-size: 0.75rem;
-  color: #64748b;
+  color: #71717a;
 }

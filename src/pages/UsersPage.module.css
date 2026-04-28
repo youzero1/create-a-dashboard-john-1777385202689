@@ -22,6 +22,11 @@
   flex: 1;
   min-width: 200px;
   max-width: 320px;
+  transition: border-color 0.15s;
+}
+
+.searchBox:focus-within {
+  border-color: var(--color-primary);
 }
 
 .searchIcon {
@@ -55,11 +60,13 @@
   color: var(--color-text-muted);
   font-size: 0.8125rem;
   cursor: pointer;
-  transition: background-color 0.15s, color 0.15s;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .filterBtn:hover {
-  background-color: var(--color-background);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .filterActive {
@@ -70,6 +77,7 @@
 
 .filterActive:hover {
   background-color: var(--color-primary-hover);
+  color: #fff;
 }
 
 .addBtn {
@@ -85,11 +93,13 @@
   font-size: 0.875rem;
   font-weight: 500;
   margin-left: auto;
-  transition: background-color 0.15s;
+  transition: background-color 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 6px rgba(124,58,237,0.3);
 }
 
 .addBtn:hover {
   background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 10px rgba(124,58,237,0.4);
 }
 
 .tableWrap {
@@ -114,7 +124,7 @@
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  background-color: var(--color-background);
+  background-color: #faf9ff;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -129,7 +139,7 @@
 }
 
 .table tbody tr:hover {
-  background-color: var(--color-background);
+  background-color: #faf9ff;
 }
 
 .userCell {
@@ -183,12 +193,12 @@
 }
 
 .statusActive {
-  background-color: #d1fae5;
-  color: var(--color-success);
+  background-color: #dcfce7;
+  color: #16a34a;
 }
 
 .statusInactive {
-  background-color: #f1f5f9;
+  background-color: #f4f4f5;
   color: var(--color-text-muted);
 }
 
@@ -201,12 +211,12 @@
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
-  transition: background-color 0.15s;
+  transition: background-color 0.15s, color 0.15s;
 }
 
 .moreBtn:hover {
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
 }
 
 .empty {

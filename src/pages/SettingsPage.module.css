@@ -42,10 +42,12 @@
 .tabBtnActive {
   background-color: var(--color-primary-light);
   color: var(--color-primary);
+  font-weight: 600;
 }
 
 .tabBtnActive:hover {
   background-color: var(--color-primary-light);
+  color: var(--color-primary);
 }
 
 .panel {
@@ -79,7 +81,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: var(--color-primary);
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   color: #fff;
   display: flex;
   align-items: center;
@@ -87,6 +89,7 @@
   font-size: 1rem;
   font-weight: 700;
   flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(124,58,237,0.35);
 }
 
 .avatarName {
@@ -131,11 +134,12 @@
   color: var(--color-text);
   background-color: var(--color-background);
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .input:focus {
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
 }
 
 .textarea {
@@ -147,11 +151,12 @@
   background-color: var(--color-background);
   outline: none;
   resize: vertical;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .textarea:focus {
   border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
 }
 
 .saveBtn {
@@ -166,11 +171,13 @@
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.15s;
+  transition: background-color 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 6px rgba(124,58,237,0.3);
 }
 
 .saveBtn:hover {
   background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 10px rgba(124,58,237,0.4);
 }
 
 .toggleList {
@@ -187,6 +194,11 @@
   background-color: var(--color-background);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
+  transition: border-color 0.15s;
+}
+
+.toggleItem:hover {
+  border-color: var(--color-primary);
 }
 
 .toggleLabel {
@@ -216,6 +228,7 @@
 
 .toggleOn {
   background-color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(124,58,237,0.35);
 }
 
 .toggleThumb {
@@ -228,6 +241,7 @@
   background-color: #fff;
   transition: transform 0.2s;
   display: block;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .toggleOn .toggleThumb {
@@ -249,11 +263,17 @@
   border-radius: var(--radius-lg);
   background: none;
   cursor: pointer;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.themeCard:hover {
+  border-color: #a78bfa;
+  box-shadow: 0 2px 8px rgba(124,58,237,0.15);
 }
 
 .themeCardActive {
   border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(124,58,237,0.2);
 }
 
 .themePreview {
@@ -268,11 +288,11 @@
 }
 
 .dark {
-  background-color: #1e293b;
+  background-color: #18181b;
 }
 
 .system {
-  background: linear-gradient(135deg, #ffffff 50%, #1e293b 50%);
+  background: linear-gradient(135deg, #ffffff 50%, #18181b 50%);
 }
 
 .themeLabel {
