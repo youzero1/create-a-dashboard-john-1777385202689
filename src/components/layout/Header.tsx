@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Bell, Search, Check, X, ChevronDown, User, Settings, LogOut } from 'lucide-react';
+import { Bell, Search, Check, X, ChevronDown, User, Settings, LogOut, Menu } from 'lucide-react';
 import styles from './Header.module.css';
 
 const pageTitles: Record<string, string> = {
@@ -16,13 +16,18 @@ const notifications = [
   { id: 3, text: 'Server usage at 90%', time: '3 hr ago', read: false },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  onMenuClick: () => void;
+}
+
+export default function Header({ onMenuClick }: HeaderProps) {
   const location = useLocation();
   const title = pageTitles[location.pathname] || 'Dashboard';
 
   const [notifOpen, setNotifOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [notifList, setNotifList] = useState(notifications);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const notifRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
@@ -53,10 +58,14 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
+        <button className={styles.menuBtn} onClick={onMenuClick} aria-label="Toggle menu">
+          <Menu size={20} />
+        </button>
         <h1 className={styles.title}>{title}</h1>
       </div>
       <div className={styles.right}>
-        <div className={styles.searchBox}>
+        {/* Desktop search */}
+        <div className={`${styles.searchBox} ${styles.searchDesktop}`}>
           <Search size={15} className={styles.searchIcon} />
           <input
             className={styles.searchInput}
@@ -64,6 +73,15 @@ export default function Header() {
             placeholder="Search..."
           />
         </div>
+
+        {/* Mobile search toggle */}
+        <button
+          className={`${styles.iconBtn} ${styles.searchMobileBtn}`}
+          onClick={() => setSearchOpen((v) => !v)}
+          aria-label="Search"
+        >
+          <Search size={18} />
+        </button>
 
         {/* Notifications */}
         <div className={styles.popoverWrap} ref={notifRef}>
@@ -160,6 +178,22 @@ export default function Header() {
           )}
         </div>
       </div>
+
+      {/* Mobile search bar */}
+      {searchOpen && (
+        <div className={styles.searchMobileBar}>
+          <Search size={15} className={styles.searchIcon} />
+          <input
+            className={styles.searchInput}
+            type="text"
+            placeholder="Search..."
+            autoFocus
+          />
+          <button className={styles.dismissBtn} onClick={() => setSearchOpen(false)}>
+            <X size={14} />
+          </button>
+        </div>
+      )}
     </header>
   );
 }
