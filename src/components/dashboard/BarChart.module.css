@@ -7,6 +7,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .title {
@@ -38,7 +39,7 @@
   width: 100%;
   display: flex;
   align-items: flex-end;
-  background-color: #f4f2fe;
+  background-color: var(--color-primary-light);
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
@@ -49,6 +50,10 @@
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   transition: height 0.3s ease;
   min-height: 4px;
+}
+
+[data-theme="dark"] .bar {
+  background: linear-gradient(180deg, #c4b5fd 0%, #a78bfa 100%);
 }
 
 .barLabel {

@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Bell, Search, Check, X, ChevronDown, User, Settings, LogOut, Menu } from 'lucide-react';
+import { Bell, Search, Check, X, ChevronDown, User, Settings, LogOut, Menu, Sun, Moon, Monitor } from 'lucide-react';
 import styles from './Header.module.css';
+import { useTheme } from '@/context/ThemeContext';
 
 const pageTitles: Record<string, string> = {
   '/dashboard': 'Dashboard',
@@ -23,14 +24,17 @@ interface HeaderProps {
 export default function Header({ onMenuClick }: HeaderProps) {
   const location = useLocation();
   const title = pageTitles[location.pathname] || 'Dashboard';
+  const { theme, setTheme } = useTheme();
 
   const [notifOpen, setNotifOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [themeOpen, setThemeOpen] = useState(false);
   const [notifList, setNotifList] = useState(notifications);
   const [searchOpen, setSearchOpen] = useState(false);
 
   const notifRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
+  const themeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -39,6 +43,9 @@ export default function Header({ onMenuClick }: HeaderProps) {
       }
       if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
         setProfileOpen(false);
+      }
+      if (themeRef.current && !themeRef.current.contains(e.target as Node)) {
+        setThemeOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -54,6 +61,8 @@ export default function Header({ onMenuClick }: HeaderProps) {
   function dismissNotif(id: number) {
     setNotifList((prev) => prev.filter((n) => n.id !== id));
   }
+
+  const themeIcon = theme === 'dark' ? <Moon size={16} /> : theme === 'light' ? <Sun size={16} /> : <Monitor size={16} />;
 
   return (
     <header className={styles.header}>
@@ -83,6 +92,43 @@ export default function Header({ onMenuClick }: HeaderProps) {
           <Search size={18} />
         </button>
 
+        {/* Theme picker */}
+        <div className={styles.popoverWrap} ref={themeRef}>
+          <button
+            className={styles.iconBtn}
+            onClick={() => {
+              setThemeOpen((v) => !v);
+              setNotifOpen(false);
+              setProfileOpen(false);
+            }}
+            aria-label="Toggle theme"
+          >
+            {themeIcon}
+          </button>
+          {themeOpen && (
+            <div className={`${styles.dropdown} ${styles.themeDropdown}`}>
+              <div className={styles.dropdownHeader}>
+                <span className={styles.dropdownTitle}>Theme</span>
+              </div>
+              <ul className={styles.themeList}>
+                {(['light', 'system', 'dark'] as const).map((t) => (
+                  <li
+                    key={t}
+                    className={`${styles.themeOption} ${theme === t ? styles.themeOptionActive : ''}`}
+                    onClick={() => { setTheme(t); setThemeOpen(false); }}
+                  >
+                    {t === 'light' && <Sun size={14} />}
+                    {t === 'dark' && <Moon size={14} />}
+                    {t === 'system' && <Monitor size={14} />}
+                    <span>{t.charAt(0).toUpperCase() + t.slice(1)}</span>
+                    {theme === t && <Check size={13} className={styles.themeCheck} />}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
         {/* Notifications */}
         <div className={styles.popoverWrap} ref={notifRef}>
           <button
@@ -90,6 +136,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
             onClick={() => {
               setNotifOpen((v) => !v);
               setProfileOpen(false);
+              setThemeOpen(false);
             }}
           >
             <Bell size={18} />
@@ -141,6 +188,7 @@ export default function Header({ onMenuClick }: HeaderProps) {
             onClick={() => {
               setProfileOpen((v) => !v);
               setNotifOpen(false);
+              setThemeOpen(false);
             }}
           >
             <div className={styles.avatar}>JD</div>

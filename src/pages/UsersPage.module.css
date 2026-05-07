@@ -111,6 +111,7 @@
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   overflow-x: auto;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .table {
@@ -128,7 +129,7 @@
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  background-color: #faf9ff;
+  background-color: var(--color-background);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -143,7 +144,7 @@
 }
 
 .table tbody tr:hover {
-  background-color: #faf9ff;
+  background-color: var(--color-background);
 }
 
 .userCell {
@@ -197,12 +198,12 @@
 }
 
 .statusActive {
-  background-color: #dcfce7;
-  color: #16a34a;
+  background-color: rgba(74, 222, 128, 0.15);
+  color: var(--color-success);
 }
 
 .statusInactive {
-  background-color: #f4f4f5;
+  background-color: var(--color-border);
   color: var(--color-text-muted);
 }
 
